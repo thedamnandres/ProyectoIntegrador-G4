@@ -34,7 +34,6 @@ db.createCollection("arquideosis", {
   validationLevel: "strict", // Aplica siempre la validación
   validationAction: "error", // Rechaza documentos que no cumplan
 });
-
 db.createCollection("catequista", {
   capped: false,
   validator: {
@@ -50,26 +49,44 @@ db.createCollection("catequista", {
         nombres: {
           bsonType: "string",
           description: "Nombres del usuario o persona",
+          minLength: 1,
+          maxLength: 50,
+
         },
         apellidos: {
           bsonType: "string",
           description: "Apellidos del usuario o persona",
+          minLength: 1,
+          maxLength: 50,
+
         },
         rol: {
           bsonType: "string",
           description: "Rol que desempeña la persona",
+          minLength: 1,
+          maxLength: 50,
+
         },
         telefono: {
           bsonType: "string",
           description: "Número telefónico de contacto",
+          minLength: 1,
+          maxLength: 20,
+
         },
         correo: {
           bsonType: "string",
           description: "Correo electrónico de la persona",
+          minLength: 1,
+          maxLength: 50,
+
         },
         direccion: {
           bsonType: "string",
           description: "Dirección física de residencia",
+          minLength: 1,
+          maxLength: 200,
+
         },
       },
       additionalProperties: false,
@@ -95,14 +112,23 @@ db.createCollection("parroquias", {
         nombre_parroquia: {
           bsonType: "string",
           description: "Nombre oficial de la parroquia",
+          minLength: 1,
+          maxLength: 50,
+
         },
         telefono: {
           bsonType: "string",
           description: "Número de contacto de la parroquia",
+          minLength: 1,
+          maxLength: 20,
+
         },
         direccion: {
           bsonType: "string",
           description: "Dirección de la parroquia",
+          minLength: 1,
+          maxLength: 500,
+
         },
         es_principal: {
           bsonType: "bool",
@@ -124,6 +150,7 @@ db.createCollection("parroquias", {
   validationAction: "warn",
 });
 
+//YO
 db.createCollection("persona", {
   capped: false,
   validator: {
@@ -304,22 +331,37 @@ db.createCollection("madres", {
         cedula: {
           bsonType: "string",
           description: "Número de cédula del catequista",
+          minLength: 1,
+          maxLength: 20,
+
         },
         nombres: {
           bsonType: "string",
           description: "Nombres del catequista",
+          minLength: 1,
+          maxLength: 50,
+
         },
         apellidos: {
           bsonType: "string",
           description: "Apellidos del catequista",
+          minLength: 1,
+          maxLength: 50,
+
         },
         telefono: {
           bsonType: "string",
           description: "Teléfono del catequista",
+          minLength: 1,
+          maxLength: 20,
+
         },
         direccion: {
           bsonType: "string",
           description: "Dirección del catequista",
+          minLength: 1,
+          maxLength: 200,
+
         },
       },
       additionalProperties: false,
@@ -328,6 +370,7 @@ db.createCollection("madres", {
   validationLevel: "off",
   validationAction: "warn",
 });
+
 
 db.createCollection("niveles", {
   capped: false,
@@ -400,22 +443,37 @@ db.createCollection("padres", {
         cedula: {
           bsonType: "string",
           description: "Número de cédula del representante",
+          minLength: 1,
+          maxLength: 20,
+
         },
         nombres: {
           bsonType: "string",
           description: "Nombres del representante",
+          minLength: 1,
+          maxLength: 50,
+
         },
         apellidos: {
           bsonType: "string",
           description: "Apellidos del representante",
+          minLength: 1,
+          maxLength: 50,
+
         },
         telefono: {
           bsonType: "string",
           description: "Teléfono del representante",
+          minLength: 1,
+          maxLength: 20,
+
         },
         direccion: {
           bsonType: "string",
           description: "Dirección del representante",
+          minLength: 1,
+          maxLength: 200,
+
         },
       },
       additionalProperties: false,
