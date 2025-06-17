@@ -167,14 +167,17 @@ db.createCollection("persona", {
         cedula: {
           bsonType: "string",
           description: "Número de identificación de la persona",
+          minLength: 10, maxLength: 10
         },
         nombres: {
           bsonType: "string",
           description: "Nombres de la persona",
+          minLength: 1, maxLength: 50
         },
         apellidos: {
           bsonType: "string",
           description: "Apellidos de la persona",
+          minLength: 1, maxLength: 50
         },
         fecha_nacimiento: {
           bsonType: "date",
@@ -183,50 +186,62 @@ db.createCollection("persona", {
         lugar_nacimiento: {
           bsonType: "string",
           description: "Lugar donde nació",
+          minLength: 1, maxLength: 100
         },
         edad: {
           bsonType: "number",
           description: "Edad actual",
+          minimum: 0, maximum: 120
         },
         sexo: {
           bsonType: "string",
           description: "Sexo biológico",
+          minLength: 1, maxLength: 10 
         },
         rol: {
           bsonType: "string",
           description: "Rol dentro del sistema",
+          minLength: 1, maxLength: 30
         },
         telefono_domicilio: {
           bsonType: "string",
           description: "Teléfono del domicilio",
+          minLength: 7, maxLength: 15 
         },
         direccion_domicilio: {
           bsonType: "string",
           description: "Dirección del domicilio",
+          minLength: 1, maxLength: 100
         },
         unidad_educativa: {
           bsonType: "string",
           description: "Nombre de la institución educativa",
+          minLength: 1, maxLength: 100
         },
         alergias: {
           bsonType: "string",
           description: "Alergias que padece",
+          minLength: 0, maxLength: 200
         },
         tipo_sangre: {
           bsonType: "string",
           description: "Tipo de sangre",
+          minLength: 1, maxLength: 5 
         },
         contacto_emergencia: {
           bsonType: "string",
           description: "Persona de contacto en emergencias",
+           minLength: 1, maxLength: 100
         },
         consideraciones: {
           bsonType: "string",
           description: "Consideraciones médicas u observaciones",
+          minLength: 0, maxLength: 200 
         },
         parroquia_id: {
           bsonType: "string",
           description: "Referencia a la parroquia de pertenencia",
+          minLength: 1, maxLength: 50 
         },
         madre_id: {
           bsonType: "objectId",
@@ -244,26 +259,32 @@ db.createCollection("persona", {
             nombre_padrino: {
               bsonType: "string",
               description: "Nombre del padrino de bautismo",
+              minLength: 1, maxLength: 50
             },
             nombre_madrina: {
               bsonType: "string",
               description: "Nombre de la madrina de bautismo",
+              minLength: 1, maxLength: 50
             },
             nombre_abuelo_materno: {
               bsonType: "string",
               description: "Nombre del abuelo materno",
+              minLength: 1, maxLength: 50 
             },
             nombre_abuela_materno: {
               bsonType: "string",
               description: "Nombre de la abuela materna",
+              minLength: 1, maxLength: 50
             },
             nombre_abuelo_paterno: {
               bsonType: "string",
               description: "Nombre del abuelo paterno",
+              minLength: 1, maxLength: 50 
             },
             nombre_abuela_paterno: {
               bsonType: "string",
               description: "Nombre de la abuela paterna",
+              minLength: 1, maxLength: 50
             },
             fecha_bautizo: {
               bsonType: "date",
@@ -272,6 +293,7 @@ db.createCollection("persona", {
             lugar_bautizo: {
               bsonType: "string",
               description: "Lugar donde se realizó el bautizo",
+              minLength: 1, maxLength: 100
             },
           },
           additionalProperties: false,
@@ -280,8 +302,8 @@ db.createCollection("persona", {
       additionalProperties: false,
     },
   },
-  validationLevel: "off",
-  validationAction: "warn",
+  validationLevel: "strict", // Aplica siempre la validación
+  validationAction: "error", // Rechaza documentos que no cumplan
 });
 
 
@@ -388,10 +410,12 @@ db.createCollection("niveles", {
         nombre_parroquia: {
           bsonType: "string",
           description: "Nombre de la parroquia asociada",
+          minLength: 1, maxLength: 100
         },
         descripcion: {
           bsonType: "string",
           description: "Descripción del nivel o curso",
+          minLength: 1, maxLength: 200
         },
         sacramento_id: {
           bsonType: "objectId",
@@ -412,10 +436,12 @@ db.createCollection("niveles", {
             titulo: {
               bsonType: "string",
               description: "Título del libro o recurso",
+              minLength: 1, maxLength: 100
             },
             descripcion: {
               bsonType: "string",
               description: "Descripción del contenido del libro",
+              minLength: 1, maxLength: 200
             },
           },
           additionalProperties: false,
@@ -424,8 +450,8 @@ db.createCollection("niveles", {
       additionalProperties: false,
     },
   },
-  validationLevel: "off",
-  validationAction: "warn",
+  validationLevel: "strict", // Aplica siempre la validación
+  validationAction: "error", // Rechaza documentos que no cumplan
 });
 
 db.createCollection("padres", {
@@ -498,10 +524,12 @@ db.createCollection("grupos", {
         nombre: {
           bsonType: "string",
           description: "Nombre del nivel de formación",
+          minLength: 1, maxLength: 50 
         },
         periodo: {
           bsonType: "number",
           description: "Año o ciclo correspondiente al nivel",
+          minimum: 2000, maximum: 2100
         },
         parroquia_id: {
           bsonType: "objectId",
@@ -515,8 +543,8 @@ db.createCollection("grupos", {
       additionalProperties: false,
     },
   },
-  validationLevel: "off",
-  validationAction: "warn",
+  validationLevel: "strict", // Aplica siempre la validación
+  validationAction: "error", // Rechaza documentos que no cumplan
 });
 
 db.createCollection("inscripciones", {
@@ -547,17 +575,19 @@ db.createCollection("inscripciones", {
         estado_pago: {
           bsonType: "string",
           description: "Estado del pago realizado",
+          minLength: 1, maxLength: 20 
         },
         observaciones: {
           bsonType: "string",
           description: "Comentarios adicionales sobre la inscripción",
+          minLength: 0, maxLength: 200
         },
       },
       additionalProperties: false,
     },
   },
-  validationLevel: "off",
-  validationAction: "warn",
+  validationLevel: "strict", // Aplica siempre la validación
+  validationAction: "error", // Rechaza documentos que no cumplan
 });
 
 
