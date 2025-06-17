@@ -325,10 +325,16 @@ db.createCollection("sacramentos", {
         nombre: {
           bsonType: "string",
           description: "Nombre del sacramento",
+          minLength: 1,
+          maxLength: 50,
+
         },
         descripcion: {
           bsonType: "string",
           description: "Descripción general del sacramento",
+          minLength: 1,
+          maxLength: 500,
+
         },
       },
       additionalProperties: false,
@@ -613,6 +619,8 @@ db.createCollection("certificados", {
           bsonType: "string",
           description:
             "Descripción de la actividad, situación o registro asociado",
+          minLength: 1,
+          maxLength: 500,
         },
       },
       additionalProperties: false,
